@@ -8,7 +8,7 @@ Note that this is **unofficial** and features are not guaranteed. Please refer t
 
 ![Image showing tree-sitter grammar in helix.](./helix-demo.png)
 
-Adapted from the current [Dafny homepage](https://dafny.org/). Uses a theme inspired by <https://nest.pijul.com/levi/helix-editor-theme-doom-one>.
+Adapted from the current [Dafny homepage](https://dafny.org/). Displayed in helix, using a theme inspired by <https://nest.pijul.com/levi/helix-editor-theme-doom-one>.
 
 ## Tested Text Editors
 - Helix
