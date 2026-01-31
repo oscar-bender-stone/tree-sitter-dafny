@@ -17,12 +17,9 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$._expression, $._primary_expression],
-    [$._type, $._primary_expression],
-    [$.block, $._statement],
-    [$._assignment_lhs, $._primary_expression],
+    [$._type, $._primary_expression], // Identifier ambiguity
+    [$._assignment_lhs, $._primary_expression], // LHS vs Expression ambiguity
     [$.block, $.set_display], // {} is empty block or empty set
-    [$.if_statement, $.labeled_statement],
     [$.formal_parameter, $.tuple_type], // Ambiguity in (T) inside formal params
     [$.match_statement, $.match_expression] // Ambiguity between match stmt and expr
   ],
@@ -415,7 +412,6 @@ export default grammar({
         '}'
     ),
 
-    // Use prec.right to prefer consuming '::' in nested comprehensions
     set_comprehension: $ => prec.right(seq(
         choice('set', 'iset'),
         sep1($.formal_parameter, ','),

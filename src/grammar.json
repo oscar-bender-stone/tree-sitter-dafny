@@ -4114,16 +4114,8 @@
   ],
   "conflicts": [
     [
-      "_expression",
-      "_primary_expression"
-    ],
-    [
       "_type",
       "_primary_expression"
-    ],
-    [
-      "block",
-      "_statement"
     ],
     [
       "_assignment_lhs",
@@ -4132,10 +4124,6 @@
     [
       "block",
       "set_display"
-    ],
-    [
-      "if_statement",
-      "labeled_statement"
     ],
     [
       "formal_parameter",
