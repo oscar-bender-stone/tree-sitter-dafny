@@ -41,8 +41,14 @@ export default grammar({
       $.function_definition,
       $.lemma_definition,
       $.const_definition,
-      $.import_declaration
+      $.import_declaration,
+      $.export_declaration
     ),
+
+    // --- Shared Patterns ---
+
+    // Extracting modifiers prevents lookahead conflicts between method/function/lemma
+    _modifiers: $ => repeat1(choice('ghost', 'static', 'opaque')),
 
     // --- High Level Declarations ---
 
@@ -53,6 +59,12 @@ export default grammar({
       $.identifier,
       optional(seq('refines', $.identifier)),
       $.block
+    ),
+
+    export_declaration: $ => seq(
+      'export',
+      optional($.identifier), // named export
+      repeat(seq(choice('provides', 'reveals'), sep1($.identifier, ',')))
     ),
 
     class_definition: $ => seq(
@@ -120,6 +132,7 @@ export default grammar({
     ),
 
     method_definition: $ => seq(
+      optional($._modifiers),
       choice('method', 'constructor'),
       optional($.attributes),
       $.identifier,
@@ -131,6 +144,7 @@ export default grammar({
     ),
 
     function_definition: $ => seq(
+      optional($._modifiers),
       choice('function', 'predicate', 'twostate function', 'twostate predicate', 'least predicate', 'greatest predicate'),
       optional($.attributes),
       $.identifier,
@@ -142,6 +156,7 @@ export default grammar({
     ),
 
     lemma_definition: $ => seq(
+      optional($._modifiers),
       choice('lemma', 'least lemma', 'greatest lemma'),
       optional($.attributes),
       $.identifier,
@@ -153,12 +168,16 @@ export default grammar({
     ),
 
     const_definition: $ => seq(
-      optional('ghost'),
+      optional($._modifiers),
       'const',
       optional($.attributes),
       $.identifier,
       optional(seq(':', $._type)),
-      optional(seq(':=', $._expression)),
+      optional(seq(
+        choice(':=', ':|'), 
+        $._expression,
+        optional(seq('witness', $._expression))
+      )),
       ';'
     ),
 
@@ -231,7 +250,11 @@ export default grammar({
       'var',
       sep1($.identifier, ','),
       optional(seq(':', $._type)),
-      optional(seq(choice(':=', ':|'), $._expression)), 
+      optional(seq(
+        choice(':=', ':|'), 
+        $._expression,
+        optional(seq('witness', $._expression))
+      )), 
       ';'
     ),
 

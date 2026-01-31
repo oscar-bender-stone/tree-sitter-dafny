@@ -1444,6 +1444,21 @@
     }
   },
   {
+    "type": "export_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "forall_statement",
     "named": true,
     "fields": {},
@@ -3506,6 +3521,10 @@
           "named": true
         },
         {
+          "type": "export_declaration",
+          "named": true
+        },
+        {
           "type": "function_definition",
           "named": true
         },
@@ -4472,6 +4491,10 @@
     "named": false
   },
   {
+    "type": "export",
+    "named": false
+  },
+  {
     "type": "extends",
     "named": false
   },
@@ -4604,6 +4627,10 @@
     "named": false
   },
   {
+    "type": "opaque",
+    "named": false
+  },
+  {
     "type": "opened",
     "named": false
   },
@@ -4660,6 +4687,10 @@
     "named": false
   },
   {
+    "type": "static",
+    "named": false
+  },
+  {
     "type": "string",
     "named": false
   },
@@ -4697,6 +4728,10 @@
   },
   {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "witness",
     "named": false
   },
   {
