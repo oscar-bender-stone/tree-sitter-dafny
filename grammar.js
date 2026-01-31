@@ -17,11 +17,11 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$._type, $._primary_expression], // Identifier ambiguity
-    [$._assignment_lhs, $._primary_expression], // LHS vs Expression ambiguity
-    [$.block, $.set_display], // {} is empty block or empty set
-    [$.formal_parameter, $.tuple_type], // Ambiguity in (T) inside formal params
-    [$.match_statement, $.match_expression] // Ambiguity between match stmt and expr
+    [$._type, $._primary_expression], 
+    [$._assignment_lhs, $._primary_expression], 
+    [$.block, $.set_display], 
+    [$.formal_parameter, $.tuple_type], 
+    [$.match_statement, $.match_expression] 
   ],
 
   word: $ => $.identifier,
@@ -45,9 +45,14 @@ export default grammar({
       $.export_declaration
     ),
 
-    // --- Shared Patterns ---
-
-    // Extracting modifiers prevents lookahead conflicts between method/function/lemma
+    // --- Keywords as Nodes (Fixes Highlighting) ---
+    // Defining these as alias rules ensures they can be targeted if anonymous strings fail
+    kwd_export: $ => 'export',
+    kwd_provides: $ => 'provides',
+    kwd_reveals: $ => 'reveals',
+    kwd_witness: $ => 'witness',
+    
+    // Modifiers
     _modifiers: $ => repeat1(choice('ghost', 'static', 'opaque')),
 
     // --- High Level Declarations ---
@@ -58,13 +63,15 @@ export default grammar({
       optional($.attributes),
       $.identifier,
       optional(seq('refines', $.identifier)),
-      $.block
+      '{',
+      repeat($._definition),
+      '}'
     ),
 
     export_declaration: $ => seq(
-      'export',
-      optional($.identifier), // named export
-      repeat(seq(choice('provides', 'reveals'), sep1($.identifier, ',')))
+      $.kwd_export,
+      optional($.identifier), 
+      repeat(seq(choice($.kwd_provides, $.kwd_reveals), sep1($.identifier, ',')))
     ),
 
     class_definition: $ => seq(
@@ -73,7 +80,9 @@ export default grammar({
       $.identifier,
       optional($.type_parameters),
       optional(seq('extends', sep1($._type, ','))),
-      $.block
+      '{',
+      repeat($._class_member),
+      '}'
     ),
 
     trait_definition: $ => seq(
@@ -82,7 +91,16 @@ export default grammar({
       $.identifier,
       optional($.type_parameters),
       optional(seq('extends', sep1($._type, ','))),
-      $.block
+      '{',
+      repeat($._class_member),
+      '}'
+    ),
+
+    _class_member: $ => choice(
+      $.method_definition,
+      $.function_definition,
+      $.const_definition,
+      $.var_decl
     ),
 
     datatype_definition: $ => seq(
@@ -176,7 +194,7 @@ export default grammar({
       optional(seq(
         choice(':=', ':|'), 
         $._expression,
-        optional(seq('witness', $._expression))
+        optional(seq($.kwd_witness, $._expression))
       )),
       ';'
     ),
@@ -253,7 +271,7 @@ export default grammar({
       optional(seq(
         choice(':=', ':|'), 
         $._expression,
-        optional(seq('witness', $._expression))
+        optional(seq($.kwd_witness, $._expression))
       )), 
       ';'
     ),

@@ -1127,15 +1127,23 @@
           "named": true
         },
         {
-          "type": "block",
-          "named": true
-        },
-        {
           "type": "collection_type",
           "named": true
         },
         {
+          "type": "const_definition",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_definition",
           "named": true
         },
         {
@@ -1148,6 +1156,10 @@
         },
         {
           "type": "type_parameters",
+          "named": true
+        },
+        {
+          "type": "var_decl",
           "named": true
         }
       ]
@@ -1218,6 +1230,10 @@
         },
         {
           "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "kwd_witness",
           "named": true
         },
         {
@@ -1449,10 +1465,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "kwd_export",
+          "named": true
+        },
+        {
+          "type": "kwd_provides",
+          "named": true
+        },
+        {
+          "type": "kwd_reveals",
           "named": true
         }
       ]
@@ -1878,6 +1906,16 @@
         }
       ]
     }
+  },
+  {
+    "type": "kwd_provides",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "kwd_reveals",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "labeled_statement",
@@ -2714,11 +2752,59 @@
           "named": true
         },
         {
-          "type": "block",
+          "type": "class_definition",
+          "named": true
+        },
+        {
+          "type": "const_definition",
+          "named": true
+        },
+        {
+          "type": "datatype_definition",
+          "named": true
+        },
+        {
+          "type": "export_declaration",
+          "named": true
+        },
+        {
+          "type": "function_definition",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "import_declaration",
+          "named": true
+        },
+        {
+          "type": "iterator_definition",
+          "named": true
+        },
+        {
+          "type": "lemma_definition",
+          "named": true
+        },
+        {
+          "type": "method_definition",
+          "named": true
+        },
+        {
+          "type": "module_definition",
+          "named": true
+        },
+        {
+          "type": "newtype_definition",
+          "named": true
+        },
+        {
+          "type": "trait_definition",
+          "named": true
+        },
+        {
+          "type": "type_synonym",
           "named": true
         }
       ]
@@ -3581,15 +3667,23 @@
           "named": true
         },
         {
-          "type": "block",
-          "named": true
-        },
-        {
           "type": "collection_type",
           "named": true
         },
         {
+          "type": "const_definition",
+          "named": true
+        },
+        {
+          "type": "function_definition",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_definition",
           "named": true
         },
         {
@@ -3602,6 +3696,10 @@
         },
         {
           "type": "type_parameters",
+          "named": true
+        },
+        {
+          "type": "var_decl",
           "named": true
         }
       ]
@@ -3904,6 +4002,10 @@
         },
         {
           "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "kwd_witness",
           "named": true
         },
         {
@@ -4491,10 +4593,6 @@
     "named": false
   },
   {
-    "type": "export",
-    "named": false
-  },
-  {
     "type": "extends",
     "named": false
   },
@@ -4561,6 +4659,14 @@
   {
     "type": "iterator",
     "named": false
+  },
+  {
+    "type": "kwd_export",
+    "named": true
+  },
+  {
+    "type": "kwd_witness",
+    "named": true
   },
   {
     "type": "label",
@@ -4728,10 +4834,6 @@
   },
   {
     "type": "while",
-    "named": false
-  },
-  {
-    "type": "witness",
     "named": false
   },
   {

@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-dafny
 HOMEPAGE_URL := https://github.com/oscar-bender-stone/tree-sitter-dafny
-VERSION := 0.4.0
+VERSION := 0.5.0
 
 # repository
 SRC_DIR := src
