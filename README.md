@@ -4,5 +4,11 @@ Directly responds to this issue in tree-sitter repository: [Support for \[Dafny\
 
 Note that this is **unofficial** and features are not guaranteed. Please refer to the [included MIT license][./LICENSES/MIT.txt].
 
+## Demo
+
+![Image showing tree-sitter grammar in helix.]
+
+Adapted from the current [Dafny homepage](https://dafny.org/). Uses a theme inspired by <https://nest.pijul.com/levi/helix-editor-theme-doom-one>.
+
 ## Tested Text Editors
 - Helix
