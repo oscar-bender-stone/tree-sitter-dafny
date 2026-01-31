@@ -6,7 +6,7 @@ Note that this is **unofficial** and features are not guaranteed. Please refer t
 
 ## Demo
 
-![Image showing tree-sitter grammar in helix.]
+![Image showing tree-sitter grammar in helix.](./helix-demo.png)
 
 Adapted from the current [Dafny homepage](https://dafny.org/). Uses a theme inspired by <https://nest.pijul.com/levi/helix-editor-theme-doom-one>.
 
