@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "dafny",
+      "camelcase": "Dafny",
+      "title": "Dafny",
+      "scope": "source.dafny",
+      "file-types": [
+        "dfy"
+      ],
+      "injection-regex": "^dafny$",
+      "class-name": "TreeSitterDafny"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Unofficial tree-sitter grammar for the Dafny language.",
+    "authors": [
+      {
+        "name": "Oscar Bender-Stone",
+        "email": "oscar-bender-stone@protonmail.com",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/oscar-bender-stone/tree-sitter-dafny",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
